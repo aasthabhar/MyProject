@@ -1,0 +1,27 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class CharacterFrequencies
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	   String str = "abcabcbb"; 
+	   Map<Character,Integer> charCountMap = new HashMap<>(); // Create HashMap to store character frequencies
+
+     //Loop through each character in the string
+	   for(char ch : str.toCharArray()){
+	       if(ch != ' '){ // Ignore space
+	           charCountMap.put(ch,charCountMap.getOrDefault(ch,0)+1); //Increment character count in the map or set it to 1 if not present
+	       }
+	   } 
+
+	   System.out.println("Character Frequencies:");
+
+    //Iterate through each character in the map and print each character and its frequency
+	   for(Map.Entry<Character,Integer>entry : charCountMap.entrySet()){ 
+	       System.out.println(entry.getKey() + "->" + entry.getValue());
+	   }
+	   
+        }      
+}
