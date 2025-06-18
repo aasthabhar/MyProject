@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class FirstNonRepeatedCharacter
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    String str = "swiss";
+	    char result = findFirstNonRepaeatedCharacter(str);
+	    if(result != 0){
+	        System.out.println("First Non-repeated Character:" + result);
+	    } else{
+	        System.out.println("Non-repeated character not found.");
+	    }
+    }
+    
+    public static char findFirstNonRepaeatedCharacter(String str){
+        
+      Map<Character,Integer> charCountMap = new LinkedHashMap<>();
+      //Count frequency of each character
+      for(char ch : str.toCharArray()){
+          charCountMap.put(ch,charCountMap.getOrDefault(ch,0)+1);
+      }
+      //Find the first character with count 1
+      for(Map.Entry<Character,Integer>entry : charCountMap.entrySet()){
+          if(entry.getValue() == 1){
+              return entry.getKey();
+          }
+      } 
+      return 0; // Return 0 if no non-repeated character is found    
+    }
+}
